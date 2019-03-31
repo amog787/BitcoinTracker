@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,77 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BitcoinPriceTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N2l-7N-U8k">
+                                <rect key="frame" x="145" y="45" width="85" height="29"/>
+                                <segments>
+                                    <segment title="USD"/>
+                                    <segment title="INR"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6n-qw-Ujf">
+                                <rect key="frame" x="113" y="622" width="149" height="30"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="GET CURRENT PRICE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vUh-8r-iwF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to Internet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjM-pG-Iua">
+                                <rect key="frame" x="42.5" y="549" width="290" height="43"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <color key="highlightedColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="shadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="-2" height="-1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current BITCOIN Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-ZL-g2O">
+                                <rect key="frame" x="38" y="88" width="299" height="30.5"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNu-av-8HN" customClass="Chart" customModule="SwiftChart">
+                                <rect key="frame" x="0.0" y="138.5" width="375" height="250.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UjM-pG-Iua" secondAttribute="bottom" constant="75" id="3AH-he-pNi"/>
+                            <constraint firstItem="UjM-pG-Iua" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Tu-Wh-Sjj"/>
+                            <constraint firstItem="qNu-av-8HN" firstAttribute="top" secondItem="qyW-ZL-g2O" secondAttribute="bottom" constant="20" id="AR3-BB-65s"/>
+                            <constraint firstItem="UjM-pG-Iua" firstAttribute="top" secondItem="qNu-av-8HN" secondAttribute="bottom" constant="160" id="Na6-fb-8af"/>
+                            <constraint firstItem="N2l-7N-U8k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R3e-4E-Sr3"/>
+                            <constraint firstItem="qNu-av-8HN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jiV-i1-Ldy"/>
+                            <constraint firstItem="qyW-ZL-g2O" firstAttribute="top" secondItem="N2l-7N-U8k" secondAttribute="bottom" constant="15" id="oCa-4E-7Mq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="w6n-qw-Ujf" secondAttribute="bottom" constant="15" id="pzj-gH-lQ3"/>
+                            <constraint firstItem="qNu-av-8HN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tb0-KN-P4t"/>
+                            <constraint firstItem="N2l-7N-U8k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="u6T-B4-hj5"/>
+                            <constraint firstItem="qyW-ZL-g2O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x9S-bh-W9o"/>
+                            <constraint firstItem="qNu-av-8HN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xsO-zV-NmE"/>
+                            <constraint firstItem="w6n-qw-Ujf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xv5-Jg-8KJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="chart" destination="qNu-av-8HN" id="6K5-Sc-kjm"/>
+                        <outlet property="label" destination="UjM-pG-Iua" id="IOA-kC-zrg"/>
+                        <outlet property="name" destination="qyW-ZL-g2O" id="h4f-GP-NJb"/>
+                        <outlet property="segmentControl" destination="N2l-7N-U8k" id="Kzz-dw-W7C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="130.88455772113943"/>
         </scene>
     </scenes>
 </document>
